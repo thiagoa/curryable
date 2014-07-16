@@ -2,10 +2,11 @@ module Curryable
   def my_curry(*curry_args)
     return call(*curry_args) if trigger_call? curry_args
 
-    @curried = true
+    self.curried = true
 
     proc { |*args| call(*curry_args, *args) }.tap do |new_proc|
       new_proc.arity = arity - curry_args.length
+      new_proc.curried = true
     end
   end
 
@@ -26,6 +27,7 @@ module Curryable
   protected
 
   attr_writer :arity
+  attr_writer :curried
 
   private
 

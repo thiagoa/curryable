@@ -8,7 +8,7 @@ describe Curryable do
     end
 
     it "returns a curried proc" do
-      @fn.my_curry.must_be_instance_of Proc, @fn
+      @fn.my_curry.curried?.must_equal true
     end
 
     it "has the right arity" do
@@ -42,7 +42,7 @@ describe Curryable do
 
       describe "when my_curry is called once more with one argument" do
         it "returns a curried proc" do
-          @fn.my_curry(2).must_be_instance_of Proc, @fn
+          @fn.my_curry(2).curried?.must_equal true
         end
 
         it "has the right arity" do
@@ -52,7 +52,7 @@ describe Curryable do
 
       describe "when my_curry is called once more with two arguments" do
         it "returns a curried proc" do
-          @fn.my_curry(2, 3).must_be_instance_of Proc, @fn
+          @fn.my_curry(2, 3).curried?.must_equal true
         end
 
         it "has the right arity" do
@@ -62,7 +62,7 @@ describe Curryable do
 
       describe "when my_curry is called twice more, each with one argument" do
         it "returns a curried proc" do
-          @fn.my_curry(2).my_curry(3).must_be_instance_of Proc, @fn
+          @fn.my_curry(2).my_curry(3).curried?.must_equal true
         end
 
         it "has the right arity" do
@@ -107,7 +107,7 @@ describe Curryable do
     it "call method doesn't return a curried proc" do
       result = proc { |a, b, c| }.call(1)
 
-      result.wont_be_instance_of Proc, result
+      result.wont_respond_to :curried?
       result.must_be_nil
     end
   end
