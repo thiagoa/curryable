@@ -1,8 +1,6 @@
 require 'minitest/autorun'
 require_relative 'curryable'
 
-Proc.prepend(Curryable)
-
 describe Curryable do
   describe "my_curry runs with no arguments" do
     before do

@@ -37,3 +37,5 @@ module Curryable
     curried? && !trigger_call?(args)
   end
 end
+
+Proc.prepend Curryable
