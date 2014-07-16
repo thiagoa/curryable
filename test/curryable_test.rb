@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'curryable'
+require_relative '../curryable'
 
 describe Curryable do
   describe "my_curry runs with no arguments" do

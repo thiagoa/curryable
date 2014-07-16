@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'callable'
+require_relative '../callable'
 
 describe Callable do
   Fixture = Class.new do
