@@ -7,7 +7,7 @@ describe Curryable do
       @fn = proc { |a, b, c| a + b + c }
     end
 
-    it "returns a curried proc" do
+    it "is curried" do
       @fn.my_curry.curried?.must_equal true
     end
 
@@ -51,7 +51,7 @@ describe Curryable do
       end
 
       describe "when my_curry is called once more with one argument" do
-        it "returns a curried proc" do
+        it "is curried" do
           @fn.my_curry(2).curried?.must_equal true
         end
 
@@ -61,7 +61,7 @@ describe Curryable do
       end
 
       describe "when my_curry is called once more with two arguments" do
-        it "returns a curried proc" do
+        it "is curried" do
           @fn.my_curry(2, 3).curried?.must_equal true
         end
 
@@ -71,7 +71,7 @@ describe Curryable do
       end
 
       describe "when my_curry is called twice more, each with one argument" do
-        it "returns a curried proc" do
+        it "is curried" do
           @fn.my_curry(2).my_curry(3).curried?.must_equal true
         end
 
