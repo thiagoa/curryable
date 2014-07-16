@@ -4,6 +4,20 @@ require_relative 'curryable'
 Proc.prepend(Curryable)
 
 describe Curryable do
+  describe "my_curry runs with no arguments" do
+    before do
+      @fn = proc { |a, b, c| a + b + c }
+    end
+
+    it "returns a curried proc" do
+      @fn.my_curry.must_be_instance_of Proc, @fn
+    end
+
+    it "has the right arity" do
+      @fn.my_curry.arity.must_equal 3
+    end
+  end
+
   describe "with a proc of one argument" do
     it "my_curry returns the final result" do
       proc { |a| a }.my_curry(1).must_equal 1
