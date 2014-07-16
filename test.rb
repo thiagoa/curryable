@@ -103,8 +103,14 @@ describe Curryable do
 
   describe "when my curry is not triggered" do
     it "the arity method isn't broken" do
-      proc { |a, b|    }.arity.must_equal 2
-      proc { |a, b, c| }.arity.must_equal 3
+      proc { |a, b| }.arity.must_equal 2
+    end
+
+    it "call method doesn't return a curried proc" do
+      result = proc { |a, b, c| }.call(1)
+
+      result.wont_be_instance_of Proc, result
+      result.must_be_nil
     end
   end
 end
