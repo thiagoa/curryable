@@ -31,9 +31,19 @@ describe Curryable do
       @fn = proc { |a, b, c, d| a + b + c + d }
     end
 
+    describe 'when my_curry is not called' do
+      it "isn't curried" do
+        @fn.curried?.must_equal false
+      end
+    end
+
     describe "after my_curry is called with one argument" do
       before do
         @fn = @fn.my_curry(1)
+      end
+
+      it 'is curried' do
+        @fn.curried?.must_equal true
       end
 
       it "has the right arity" do
