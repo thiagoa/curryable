@@ -112,8 +112,8 @@ describe "a curried proc" do
     end
   end
 
-  describe "when my_curry is triggered once, the call method behaves like my_curry" do
-    it do
+  describe "when my_curry is triggered once" do
+    it "subsequent invocation of call behaves like my_curry" do
       fn = proc { |a, b, c, d| a + b + c + d }
 
       result = fn.my_curry(1).call(2, 3).call(4)
@@ -121,8 +121,8 @@ describe "a curried proc" do
     end
   end
 
-  describe "subsequent mixed invocations of my_curry and call have the same effect" do
-    it do
+  describe "subsequent mixed invocations of my_curry and call" do
+    it "have the same curry effect" do
       fn = proc { |a, b, c, d, e, f| a + b + c + d + e + f }
 
       result = fn.my_curry(1).call(2).my_curry(4).call(3).my_curry(2).call(3)
