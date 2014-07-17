@@ -24,8 +24,7 @@ module Curryable
 
   protected
 
-  attr_writer :arity
-  attr_writer :curried
+  attr_writer :arity, :curried
 
   private
 
