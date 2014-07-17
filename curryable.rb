@@ -28,8 +28,8 @@ module Curryable
 
   private
 
-  def trigger_call?(curry)
-    curry.length >= arity
+  def trigger_call?(args)
+    args.length >= arity
   end
 
   def curry?(args)
