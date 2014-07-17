@@ -11,7 +11,7 @@ module Callable
     callable = self.class.callable
 
     if callable.nil?
-      raise StandardError, 'Must define a call delegator'
+      fail StandardError, 'Must define a call delegator'
     end
 
     send callable, *args
