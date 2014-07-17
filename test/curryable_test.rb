@@ -121,6 +121,15 @@ describe "a curried proc" do
     end
   end
 
+  describe "subsequent mixed invocations of my_curry and call have the same effect" do
+    it do
+      fn = proc { |a, b, c, d, e, f| a + b + c + d + e + f }
+
+      result = fn.my_curry(1).call(2).my_curry(4).call(3).my_curry(2).call(3)
+      result.must_equal 15
+    end
+  end
+
   describe "when my curry is not triggered" do
     it "the arity method isn't broken" do
       proc { |a, b| }.arity.must_equal 2
